@@ -77,10 +77,14 @@ Page({
       success: data => {
         
         var goodsItem = data;
-        var shopGoodsImageList = goodsItem.imgUrls.split(";");
-        for (var i = 0; i < shopGoodsImageList.length; i++) {  
-          imgUrls[i] = shopGoodsImageList[i];  
+        var shopGoodsImageList
+        if(goodsItem.imgUrls != null ){
+          shopGoodsImageList = goodsItem.imgUrls.split(";");
+          for (var i = 0; i < shopGoodsImageList.length; i++) {  
+            imgUrls[i] = shopGoodsImageList[i];  
+          }
         }
+        
         var details = goodsItem.details.split(";");
         for (var j = 0; j < details.length; j++) { 
           detailImg[j] = details[j];

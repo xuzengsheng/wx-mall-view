@@ -91,9 +91,10 @@ Page({
     console.log(page)
     ajax.request({
       method: 'GET',
-      url: 'classify/getClassifyGoodList?key=' + utils.key + '&classifyId=' + classifyId + '&page=' + page + '&size=10',
+      url: '/goodsInfo/getGoodsByClassifyId?classifyId=' + classifyId,
       success: data => {
-        var newGoodsData = data.result.list;
+        
+        var newGoodsData = data;
         page += 1;
         if (ifLoadMore) {
           //加载更多
@@ -145,7 +146,10 @@ Page({
       }
     })
   },
-
+/**
+ * 商品点击事件
+ * @param {*} e 
+ */
   catchTapCategory: function (e) {
     var that = this;
     var goodsId = e.currentTarget.dataset.goodsid;
@@ -160,7 +164,8 @@ Page({
     var that = this;
     ajax.request({
       method: 'GET',
-      url: 'goods/addGoodsClickRate?key=' + utils.key + '&goodsId=' + goodsId,
+      // url: 'goods/addGoodsClickRate?key=' + utils.key + '&goodsId=' + goodsId,
+      url: '/goodsInfo/updateClickRate?id='+goodsId,
       success: data => {
         console.log("用户点击统计返回结果：" + data.message)
       }

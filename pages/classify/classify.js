@@ -7,8 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    classifyItems:[],
-    curNav: 1,
+    classifyItems: [],
+    curNav: 100,
     curIndex: 0
   },
 
@@ -35,12 +35,12 @@ Page({
     var that = this;
     ajax.request({
       method: 'GET',
-      url: 'classify/getShopClassifyList?key=' + utils.key,
+      // url: 'classify/getShopClassifyList?key=' + utils.key,
+      url: '/classfyInfo/initClassfy',
       success: data => {
         that.setData({
-          classifyItems: data.result
+          classifyItems: data
         })
-        console.log(data.result)
       }
     })
   },
